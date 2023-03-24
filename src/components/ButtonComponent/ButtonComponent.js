@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     body: {
         flex: 1,
         aspectRatio: 380 / 58,
+        maxWidth: 380,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: COLORS.PRIMARY_500,

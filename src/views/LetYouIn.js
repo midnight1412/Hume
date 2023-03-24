@@ -7,6 +7,8 @@ import {
 } from "react-native";
 import FastImage from "react-native-fast-image";
 import ButtonComponent from "../components/ButtonComponent/ButtonComponent";
+import PlatformButton from "../components/ButtonComponent/PlatformButton";
+import OptionLine from "../components/Devider/Devider";
 import PressableOpacity from "../components/PressableOpacity/PressableOpacity";
 import { DeviceInfo } from "../constants/DeviceInfo";
 import Icon from "../constants/Icon";
@@ -24,17 +26,23 @@ const LetYouIn = () => {
                 </PressableOpacity>
             </View>
 
-            <View>
-                <FastImage source={ Image.LetYouIn } style={ styles.logo } />
+            <View style={styles.logoWrapper}>
+                <FastImage source={ Image.LetYouIn } style={ styles.logo } resizeMode="contain" />
             </View>
 
-            <View>
+            <View style={styles.titleWrapper}>
                 <Text style={styles.title}> Let's you in </Text>
             </View>
 
-            <ButtonComponent 
-                title="Sign in with password"
-            />
+            <View style={styles.buttonGroup}>
+                <PlatformButton logo={ Image.Google } title="Continue with Google" />
+                <PlatformButton logo={ Image.Facebook } title="Continue with Facebook" />
+                <PlatformButton logo={ Image.Apple } title="Continue with Apple" tintColor={COLORS.BLACK}/>
+                <OptionLine title="or" />
+                <ButtonComponent 
+                    title="Sign in with password"
+                />
+            </View>
 
             <View style={styles.signUpRecommend}> 
                 <Text style={styles.recommendText}>
@@ -61,23 +69,32 @@ const styles = StyleSheet.create({
         paddingHorizontal: SIZE.PADDING,
         paddingTop: SIZE.PADDING / 2,
         paddingBottom: SIZE.PADDING * 2,
-        borderWidth: 1,
+        backgroundColor: COLORS.WHITE,
+        justifyContent: 'space-between'
     },
     controlBar: {
-        borderWidth: 1
     },
     arrowLeft: {
         width: SIZE.SPACE * 0.9,
         aspectRatio: 1
     },
+    logoWrapper: {
+        alignItems: 'center'
+    },
     logo: {
-        width: DeviceInfo.WIDTH * 0.5,
-        maxWidth: 120,
+        width: DeviceInfo.WIDTH * 0.6,
+        maxWidth: 250,
         aspectRatio: 237 / 200
+    },
+    titleWrapper: {
+        alignItems: 'center'
     },
     title: {
         color: COLORS.GREY_SCALE_900,
         ...HEADING.H1
+    },
+    buttonGroup: {
+        gap: SIZE.PADDING
     },
     signUpRecommend: {
         flexDirection: 'row',
